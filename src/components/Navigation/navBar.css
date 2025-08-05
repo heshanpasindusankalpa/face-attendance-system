@@ -1,0 +1,130 @@
+.navBarBox {
+    height: 70px; 
+    width: 100%;
+    /*
+    background:rgba(0, 0, 0, 0.2); /* A deeper green to represent sustainability and automation 
+    backdrop-filter: blur(10px); /* Apply blur effect 
+    -webkit-backdrop-filter: blur(10px); */
+    background-color: white;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a floating effect */
+    z-index: 20; /* Ensures navbar stays on top */
+ }
+ 
+ .navBarLeft {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    padding-left: 20px; /* Adjust padding for better spacing */
+ }
+ .navBarLogo {
+   width: 70px; /* Adjust size as needed */
+   height: 70px;
+   margin-left: 0px; /* Add spacing between text and image */
+   border-radius: 0%;
+  /* mix-blend-mode: multiply;   Optional: Makes the image circular */
+ }
+ 
+ 
+ .name1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: black; /* White for visibility */
+    cursor: pointer;
+
+    transition: color 0.3s ease;
+   /* Works well for white backgrounds */
+
+ }
+ .name2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: blue; /* White for visibility */
+    cursor: pointer;
+ 
+    transition: color 0.3s ease;
+   /* Works well for white backgrounds */
+
+ }
+ 
+/* .logo:hover {
+    color: #F2F2F2; // Slight hover effect for interactivity 
+ }*/
+ 
+ .navBarCenter {
+    flex: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ 
+ .navBarRight {
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+ }
+ 
+ .navBarLinks {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+ }
+ 
+ .navBarLink {
+    margin-left: 15px;
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+ }
+ 
+ .navBarLink:hover {
+    color: #A3E4D7; /* A complementary lighter green for hover */
+ }
+ 
+ .navBarIcons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 10px;
+ }
+ 
+ .navBarIcon {
+    margin-left: 15px;
+    color: #FFF;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+ }
+ 
+ .navBarIcon:hover {
+    color: #A3E4D7; /* Matches the link hover color */
+    transform: scale(1.1); /* Subtle zoom effect */
+ }
+ 
+ 
+ .searchIcon {
+    color: #235E44;
+    font-size: 20px;
+    margin-right: 10px;
+ }
+ 
+ .searchInput {
+    border: none;
+    flex-grow: 1; /* Allows input to fill remaining space */
+    font-size: 16px;
+    color: #235E44;
+    background-color: transparent;
+ }
+ 
+ .searchInput:focus {
+    outline: none;
+    border-bottom: 2px solid #A3E4D7; /* Subtle focus effect */
+ }
+ 
