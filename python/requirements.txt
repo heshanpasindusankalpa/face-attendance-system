@@ -1,0 +1,5 @@
+face_recognition
+opencv-python
+flask
+numpy
+requests   # To send data to Node.js server
