@@ -4,9 +4,27 @@ import './reg.css';
 export default function Reg() {
   const [showCamera, setShowCamera] = useState(false);
 
-  const handleCaptureClick = () => {
-    setShowCamera(true);
-  };
+  const handleCaptureClick = async () => {
+  setShowCamera(true);
+
+  const name = prompt("Enter this person's name:");
+  if (!name) return;
+
+  await fetch('http://localhost:5000/capture_faces', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name })
+  })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.msg);
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Error capturing face');
+    });
+};
+
 
   return (
     <div className="container">
