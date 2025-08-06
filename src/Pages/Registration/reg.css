@@ -1,0 +1,101 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+.registration-form {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 20px;
+}
+
+.face-capture, .employee-details {
+  width: 45%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.face-capture h2, .employee-details h2 {
+  margin-bottom: 20px;
+}
+
+.capture-box {
+  width: 100%;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.camera-icon {
+  width: 50px;
+  height: 50px;
+  /*background: url('camera_icon.png') no-repeat center center;*/
+  background-size: contain;
+}
+
+.capture-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.guidelines {
+  margin-top: 10px;
+}
+
+.guidelines ul {
+  padding: 0;
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.employee-details form {
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-details label {
+  margin-bottom: 5px;
+}
+
+.employee-details input {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.register-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.video-register {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.video-register img {
+  width: 100px;
+  height: auto;
+}
