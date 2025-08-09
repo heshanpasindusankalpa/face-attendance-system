@@ -80,3 +80,11 @@
   height: 90px;
   border-radius: 8px;
 }
+.admin-register-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.admin-register-link button {
+  margin-top: 5px;
+}

@@ -14,15 +14,18 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start-flask": "py -3.12 ./python/main.py",
+  "start": "react-scripts start",
 
+  "start-flask": "py -3.12 ./python/main.py",
+  "start-express": "node expressBackend/server.js",
 
-    "start-all": "concurrently \"npm run start-flask\" \"npm start\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+  "start-all": "concurrently \"npm run start-flask\" \"npm run start-express\" \"npm start\"",
+
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
+
   "eslintConfig": {
     "extends": [
       "react-app",

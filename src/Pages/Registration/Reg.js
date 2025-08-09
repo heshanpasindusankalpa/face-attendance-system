@@ -3,71 +3,127 @@ import './reg.css';
 
 export default function Reg() {
   const [showCamera, setShowCamera] = useState(false);
+  const [emp, setEmp] = useState({
+    employeeId: '',
+    fullName: '',
+    department: '',
+    position: '',
+    email: ''
+  });
 
-  const handleCaptureClick = async () => {
-  setShowCamera(true);
+  const handleOpenCamera = () => {
+    setShowCamera(true);
+  };
 
-  const name = prompt("Enter this person's name:");
-  if (!name) return;
+  const handleCapture = async () => {
+    const name = prompt('Enter Employee Name');
+    if (!name) return;
 
-  await fetch('http://localhost:5000/capture_faces', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name })
-  })
-    .then(res => res.json())
-    .then(data => {
+    try {
+      const res = await fetch('http://localhost:5000/capture_faces', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name })
+      });
+
+      const data = await res.json();
       alert(data.msg);
-    })
-    .catch(err => {
-      console.error(err);
-      alert('Error capturing face');
-    });
-};
+    } catch (err) {
+      alert('Error capturing face: ' + err.message);
+    }
+  };
 
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  const adminId = localStorage.getItem('adminId'); // from login
+
+  if (!adminId) {
+    return alert('No adminId found — please log in again');
+  }
+
+  try {
+    const res = await fetch('http://localhost:3001/api/register-employee', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        adminId,
+        employee: emp // wrap employee data in 'employee'
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.success) {
+      return alert(data.message || 'Error registering employee');
+    }
+
+    alert('Registered successfully');
+    setEmp({ employeeId: '', fullName: '', department: '', position: '', email: '' });
+
+  } catch (err) {
+    alert('Network error: ' + err.message);
+  }
+};
 
   return (
     <div className="container">
       <h1>Employee Registration</h1>
       <div className="registration-form">
+        {/* Face Capture Section */}
         <div className="face-capture">
           <h2>Face Capture</h2>
           <div className="capture-box">
             {showCamera ? (
-              <img src="http://localhost:5000/video_feed" alt="Live Camera" style={{ width: '100%', height: '100%' }} />
+              <img
+                src="http://localhost:5000/video_feed"
+                alt="Live Camera"
+                style={{ width: '100%', height: '100%' }}
+              />
             ) : (
-              <div className="camera-icon" onClick={handleCaptureClick}></div>
+              <div className="camera-icon" onClick={handleOpenCamera}></div>
             )}
           </div>
-          <button className="capture-button" onClick={handleCaptureClick}>Capture Photo</button>
-          <div className="guidelines">
-            <p>Guidelines for best results:</p>
-            <ul>
-              <li>Ensure good lighting</li>
-              <li>Look directly at the camera</li>
-              <li>Remove glasses or face coverings</li>
-              <li>Maintain neutral expression</li>
-            </ul>
-          </div>
+          <button className="capture-button" onClick={handleOpenCamera}>Open Camera</button>
+          <button className="capture-button" onClick={handleCapture}>Capture Photos</button>
         </div>
+
+        {/* Employee Details Form */}
         <div className="employee-details">
           <h2>Employee Details</h2>
-          <form>
+          <form onSubmit={handleSubmit}>
             <label>Employee ID</label>
-            <input type="text" placeholder="Enter employee ID" />
+            <input
+              value={emp.employeeId}
+              onChange={e => setEmp({ ...emp, employeeId: e.target.value })}
+              required
+            />
             <label>Full Name</label>
-            <input type="text" placeholder="Enter full name" />
+            <input
+              value={emp.fullName}
+              onChange={e => setEmp({ ...emp, fullName: e.target.value })}
+              required
+            />
             <label>Department</label>
-            <input type="text" placeholder="Enter department" />
+            <input
+              value={emp.department}
+              onChange={e => setEmp({ ...emp, department: e.target.value })}
+              required
+            />
             <label>Position</label>
-            <input type="text" placeholder="Enter position" />
+            <input
+              value={emp.position}
+              onChange={e => setEmp({ ...emp, position: e.target.value })}
+              required
+            />
             <label>Email</label>
-            <input type="email" placeholder="Enter email address" />
-            <button type="submit" className="register-button">Register Employee</button>
+            <input
+              type="email"
+              value={emp.email}
+              onChange={e => setEmp({ ...emp, email: e.target.value })}
+              required
+            />
+            <button type="submit">Register</button>
           </form>
-          <div className="video-register">
-            <img src="video_register_icon.png" alt="Video Register" />
-          </div>
         </div>
       </div>
     </div>

@@ -1,21 +1,11 @@
-
-/*module.exports = router;*/
+// router.js
 const express = require('express');
-const componentController = require('./controller');
-
-
-
-
-
 const router = express.Router();
+const controller = require('./controller');
 
-router.get('/components', componentController.getComponents);
-router.post('/addcomponent', componentController.addComponent);
-router.put('/updatecomponent', componentController.updateComponent);
-router.delete('/deletecomponent', componentController.deleteComponent);
-// Add to router.js
-router.get('/getComponentStates', componentController.getComponentStates);
-
-
+router.post('/register-admin', controller.registerAdmin);
+router.post('/register-employee', controller.registerEmployee);
+router.post('/mark-attendance', controller.markAttendance);
+router.post('/login', controller.login);
 
 module.exports = router;
