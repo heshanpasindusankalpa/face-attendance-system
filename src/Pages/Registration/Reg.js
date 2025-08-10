@@ -83,7 +83,7 @@ export default function Reg() {
               <div className="camera-icon" onClick={handleOpenCamera}></div>
             )}
           </div>
-          <button className="capture-button" onClick={handleOpenCamera}>Open Camera</button>
+          {/*<button className="capture-button" onClick={handleOpenCamera}>Open Camera</button>*/}
           <button className="capture-button" onClick={handleCapture}>Capture Photos</button>
         </div>
 
@@ -122,7 +122,7 @@ export default function Reg() {
               onChange={e => setEmp({ ...emp, email: e.target.value })}
               required
             />
-            <button type="submit">Register</button>
+            <button type="submit" onClick={handleOpenCamera}>Register</button>
           </form>
         </div>
       </div>
