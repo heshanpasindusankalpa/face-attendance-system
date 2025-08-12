@@ -16,7 +16,9 @@
   "scripts": {
   "start": "react-scripts start",
 
- "start-flask": "python python/venv/main.py",
+
+"start-flask": "python python/venv/main.py",
+
 
   "start-express": "node expressBackend/server.js",
 
