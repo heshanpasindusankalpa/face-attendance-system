@@ -44,10 +44,20 @@ exports.registerEmployee = async (req, res) => {
 
   const adminDb = getAdminDb(adminId);
   const Employee = adminDb.model('Employee', EmployeeSchema);
-  await new Employee(employee).save();
 
-  res.json({ success: true, message: 'Employee registered' });
+  const newEmployee = new Employee({
+    employeeId: employee.employeeId,
+    fullName: employee.fullName,
+    department: employee.department,
+    position: employee.position,
+    email: employee.email,
+    faceEncodings: employee.faceEncodings || [] // Store encodings here
+  });
+
+  await newEmployee.save();
+  res.json({ success: true, message: 'Employee registered successfully' });
 };
+
 
 // Mark attendance for employee in admin DB
 exports.markAttendance = async (req, res) => {
