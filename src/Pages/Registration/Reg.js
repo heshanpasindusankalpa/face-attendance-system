@@ -15,55 +15,58 @@ export default function Reg() {
     setShowCamera(true);
   };
 
-  const handleCapture = async () => {
-    const name = prompt('Enter Employee Name');
-    if (!name) return;
+  const handleCapture = async (empId) => {
+    if (!empId) {
+      alert('Please enter Employee Details before capturing photos');
+      return;
+    }
 
     try {
       const res = await fetch('http://localhost:5000/capture_faces', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name })
+        body: JSON.stringify({ employeeId: empId })
       });
 
       const data = await res.json();
-      alert(data.msg);
+      alert(data.msg || data.message);
+
+      setEmp(prev => ({ ...prev, faceEncodings: data.encodings }));
     } catch (err) {
       alert('Error capturing face: ' + err.message);
     }
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  const adminId = localStorage.getItem('adminId'); // from login
+    e.preventDefault();
+    const adminId = localStorage.getItem('adminId');
 
-  if (!adminId) {
-    return alert('No adminId found — please log in again');
-  }
-
-  try {
-    const res = await fetch('http://localhost:3001/api/register-employee', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        adminId,
-        employee: emp // wrap employee data in 'employee'
-      })
-    });
-
-    const data = await res.json();
-
-    if (!res.ok || !data.success) {
-      return alert(data.message || 'Error registering employee');
+    if (!adminId) {
+      return alert('No adminId found — please log in again');
     }
 
-    alert('Registered successfully');
-    setEmp({ employeeId: '', fullName: '', department: '', position: '', email: '' });
+    try {
+      const res = await fetch('http://localhost:3001/api/register-employee', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          adminId,
+          employee: emp
+        })
+      });
 
-  } catch (err) {
-    alert('Network error: ' + err.message);
-  }
-};
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        return alert(data.message || 'Error registering employee');
+      }
+
+      alert('Registered successfully');
+      setEmp({ employeeId: '', fullName: '', department: '', position: '', email: '' });
+    } catch (err) {
+      alert('Network error: ' + err.message);
+    }
+  };
 
   return (
     <div className="container">
@@ -83,8 +86,12 @@ export default function Reg() {
               <div className="camera-icon" onClick={handleOpenCamera}></div>
             )}
           </div>
-          {/*<button className="capture-button" onClick={handleOpenCamera}>Open Camera</button>*/}
-          <button className="capture-button" onClick={handleCapture}>Capture Photos</button>
+          <button
+            className="capture-button"
+            onClick={() => handleCapture(emp.employeeId)}
+          >
+            Capture Photos
+          </button>
         </div>
 
         {/* Employee Details Form */}
@@ -125,6 +132,11 @@ export default function Reg() {
             <button type="submit" onClick={handleOpenCamera}>Register</button>
           </form>
         </div>
+      </div>
+      <div className="footer">
+        <button className="submit-button" onClick={handleSubmit}>
+          Submit
+        </button>
       </div>
     </div>
   );
