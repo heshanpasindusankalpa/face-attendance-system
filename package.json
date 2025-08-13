@@ -9,26 +9,20 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^7.7.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "start": "react-scripts start",
-
-
-"start-flask": "python python/venv/main.py",
-
-
-  "start-express": "node expressBackend/server.js",
-
-  "start-all": "concurrently \"npm run start-flask\" \"npm run start-express\" \"npm start\"",
-
-  "build": "react-scripts build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
-},
-
+    "start": "react-scripts start",
+    "start-flask": "python python/venv/main.py",
+    "start-express": "node expressBackend/server.js",
+    "start-all": "concurrently \"npm run start-flask\" \"npm run start-express\" \"npm start\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
