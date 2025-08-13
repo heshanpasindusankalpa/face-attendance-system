@@ -1,70 +1,133 @@
+/* Container Styling */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+  min-height: 100vh;
+  padding: 20px;
 }
 
+/* Title */
 h1 {
   margin-top: 20px;
+  font-size: 2.2rem;
+  color: #333;
+  font-weight: 700;
+  text-align: center;
 }
 
+/* Error message */
+.error-message {
+  background-color: #ffe5e5;
+  color: #b00020;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Main Form Layout */
 .registration-form {
   display: flex;
   justify-content: space-between;
-  width: 80%;
-  margin-top: 20px;
+  width: 90%;
+  margin-top: 30px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
+/* Sections */
 .face-capture, .employee-details {
+  background: #fff;
   width: 45%;
+  min-width: 300px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.face-capture:hover, .employee-details:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
 
 .face-capture h2, .employee-details h2 {
   margin-bottom: 20px;
+  color: #444;
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
+/* Camera Box */
 .capture-box {
   width: 100%;
   height: 300px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 2px dashed #007bff;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  background: #f8faff;
+  overflow: hidden;
+}
+
+.capture-box img {
+  object-fit: cover;
 }
 
 .camera-icon {
-  width: 50px;
-  height: 50px;
-  /*background: url('camera_icon.png') no-repeat center center;*/
-  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #007bff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
+.camera-icon:hover {
+  color: #0056b3;
+}
+
+/* Capture Button */
 .capture-button {
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+  padding: 12px;
+  background: linear-gradient(90deg, #007bff, #0056b3);
   color: white;
   border: none;
   border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.guidelines {
+.capture-button:hover {
+  background: linear-gradient(90deg, #0056b3, #00408f);
+}
+
+/* Captured Images Preview */
+.captured-preview {
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 10px;
 }
 
-.guidelines ul {
-  padding: 0;
-  list-style-type: disc;
-  margin-left: 20px;
+.captured-preview img {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  margin: 5px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* Form Fields */
 .employee-details form {
   display: flex;
   flex-direction: column;
@@ -72,30 +135,58 @@ h1 {
 
 .employee-details label {
   margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
 }
 
 .employee-details input {
-  margin-bottom: 10px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.register-button {
-  padding: 10px;
-  background-color: #007bff;
+.employee-details input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0,123,255,0.4);
+  outline: none;
+}
+
+/* Footer Submit Button */
+.footer {
+  margin-top: 20px;
+}
+
+.submit-button {
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #284ea7, #213788);
   color: white;
+  font-size: 1.05rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.video-register {
-  margin-top: 20px;
-  text-align: center;
+.submit-button:hover {
+  background: linear-gradient(90deg, #218838, #1a6f2e);
 }
 
-.video-register img {
-  width: 100px;
-  height: auto;
+.submit-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .registration-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .face-capture, .employee-details {
+    width: 100%;
+  }
 }
