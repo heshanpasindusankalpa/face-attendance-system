@@ -3,37 +3,64 @@ import './reg.css';
 
 export default function Reg() {
   const [showCamera, setShowCamera] = useState(false);
+  const [isCapturing, setIsCapturing] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [emp, setEmp] = useState({
     employeeId: '',
     fullName: '',
     department: '',
     position: '',
-    email: ''
+    email: '',
+    faceEncodings: []
   });
+  const [capturedImages, setCapturedImages] = useState([]);
+  const [error, setError] = useState(null);
 
   const handleOpenCamera = () => {
+    if (!emp.employeeId || !emp.fullName) {
+      setError('Please fill Employee ID and Full Name first');
+      return;
+    }
+    setError(null);
     setShowCamera(true);
   };
 
-  const handleCapture = async (empId) => {
-    if (!empId) {
-      alert('Please enter Employee Details before capturing photos');
+  const handleCapture = async () => {
+    if (!emp.employeeId) {
+      setError('Employee ID is required before capturing');
       return;
     }
 
+    setIsCapturing(true);
+    setError(null);
+
     try {
-      const res = await fetch('http://localhost:5000/capture_faces', {
+      const res = await fetch('http://localhost:5000/capture_faces_local', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ employeeId: empId })
+        body: JSON.stringify({ employeeId: emp.employeeId })
       });
 
-      const data = await res.json();
-      alert(data.msg || data.message);
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
 
-      setEmp(prev => ({ ...prev, faceEncodings: data.encodings }));
+      const data = await res.json();
+      
+      if (data.success) {
+        setEmp(prev => ({ 
+          ...prev, 
+          faceEncodings: [...prev.faceEncodings, ...data.encodings] 
+        }));
+        setCapturedImages(prev => [...prev, ...data.images]);
+      } else {
+        throw new Error(data.message || 'Failed to capture photos');
+      }
     } catch (err) {
-      alert('Error capturing face: ' + err.message);
+      setError(err.message);
+      console.error('Capture error:', err);
+    } finally {
+      setIsCapturing(false);
     }
   };
 
@@ -42,8 +69,17 @@ export default function Reg() {
     const adminId = localStorage.getItem('adminId');
 
     if (!adminId) {
-      return alert('No adminId found — please log in again');
+      setError('No adminId found — please log in again');
+      return;
     }
+
+    if (emp.faceEncodings.length === 0) {
+      setError('Please capture face photos before submitting');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError(null);
 
     try {
       const res = await fetch('http://localhost:3001/api/register-employee', {
@@ -58,40 +94,74 @@ export default function Reg() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        return alert(data.message || 'Error registering employee');
+        throw new Error(data.message || 'Error registering employee');
       }
 
-      alert('Registered successfully');
-      setEmp({ employeeId: '', fullName: '', department: '', position: '', email: '' });
+      // Reset form on success
+      setEmp({ 
+        employeeId: '', 
+        fullName: '', 
+        department: '', 
+        position: '', 
+        email: '',
+        faceEncodings: [] 
+      });
+      setCapturedImages([]);
+      setShowCamera(false);
+      setError(null);
+      alert('Registration successful!');
+      
     } catch (err) {
-      alert('Network error: ' + err.message);
+      setError(err.message);
+      console.error('Submission error:', err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="container">
       <h1>Employee Registration</h1>
+      {error && <div className="error-message">{error}</div>}
+      
       <div className="registration-form">
         {/* Face Capture Section */}
         <div className="face-capture">
           <h2>Face Capture</h2>
           <div className="capture-box">
             {showCamera ? (
-              <img
-                src="http://localhost:5000/video_feed"
-                alt="Live Camera"
-                style={{ width: '100%', height: '100%' }}
-              />
+              <>
+                <img
+                  src="http://localhost:5000/video_feed"
+                  alt="Live Camera"
+                  style={{ width: '100%', height: '100%' }}
+                />
+                <div className="captured-preview">
+                  {capturedImages.map((img, i) => (
+                    <img 
+                      key={i} 
+                      src={`data:image/jpeg;base64,${img}`} 
+                      alt={`Capture ${i+1}`}
+                      style={{ width: '80px', height: '80px', margin: '5px' }}
+                    />
+                  ))}
+                </div>
+              </>
             ) : (
-              <div className="camera-icon" onClick={handleOpenCamera}></div>
+              <div className="camera-icon" onClick={handleOpenCamera}>
+                <span>Click to open camera</span>
+              </div>
             )}
           </div>
-          <button
-            className="capture-button"
-            onClick={() => handleCapture(emp.employeeId)}
-          >
-            Capture Photos
-          </button>
+          {showCamera && (
+            <button
+              className="capture-button"
+              onClick={handleCapture}
+              disabled={isCapturing}
+            >
+              {isCapturing ? 'Capturing...' : 'Capture Photos'}
+            </button>
+          )}
         </div>
 
         {/* Employee Details Form */}
@@ -129,13 +199,16 @@ export default function Reg() {
               onChange={e => setEmp({ ...emp, email: e.target.value })}
               required
             />
-            <button type="submit" onClick={handleOpenCamera}>Register</button>
           </form>
         </div>
       </div>
       <div className="footer">
-        <button className="submit-button" onClick={handleSubmit}>
-          Submit
+        <button 
+          className="submit-button" 
+          onClick={handleSubmit}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
       </div>
     </div>
