@@ -86,3 +86,13 @@ exports.login = async (req, res) => {
 
   res.json({ success: true, adminId: admin._id });
 };
+exports.getEmployees = async (req, res) => {
+  const { adminId } = req.query;
+  if (!adminId)
+    return res.status(400).json({ success: false, message: 'Missing adminId' });
+
+  const adminDb = getAdminDb(adminId);
+  const Employee = adminDb.model('Employee', EmployeeSchema);
+  const employees = await Employee.find({}, 'employeeId fullName department');
+  res.json({ success: true, employees });
+};

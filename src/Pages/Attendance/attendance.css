@@ -1,0 +1,47 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.camera-container {
+  margin: 20px 0;
+  position: relative;
+}
+
+.scan-button, .reset-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 5px;
+}
+
+.reset-button {
+  background-color: #f44336;
+}
+
+.scan-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #ff0000;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #ffeeee;
+  border-radius: 4px;
+}
+
+.success {
+  color: #008000;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #eeffee;
+  border-radius: 4px;
+}

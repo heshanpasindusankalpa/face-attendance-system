@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './reg.css';
 
 export default function Reg() {
+  const navigate = useNavigate();
+
   const [showCamera, setShowCamera] = useState(false);
   const [isCapturing, setIsCapturing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -210,6 +214,10 @@ export default function Reg() {
         >
           {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
+        <button className="attendance-button" onClick={() => navigate('/attendance')}>
+          Mark Attendance
+        </button>
+
       </div>
     </div>
   );
