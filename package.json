@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-flask": "python python/venv/main.py",
+    "start-flask": "python -u python/venv/main.py",
     "start-express": "node expressBackend/server.js",
     "start-all": "concurrently \"npm run start-flask\" \"npm run start-express\" \"npm start\"",
     "build": "react-scripts build",
