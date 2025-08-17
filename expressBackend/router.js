@@ -8,6 +8,6 @@ router.post('/register-employee', controller.registerEmployee);
 router.post('/mark-attendance', controller.markAttendance);
 router.post('/login', controller.login);
 router.get('/get-employees', controller.getEmployees);
-
+router.get('/get-employees-with-encodings', controller.getEmployeesWithEncodings);
 
 module.exports = router;
