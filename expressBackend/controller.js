@@ -60,15 +60,16 @@ exports.registerEmployee = async (req, res) => {
 
 
 // Mark attendance for employee in admin DB
+// controller.js (replace markAttendance to use employeeId field, not _id)
 exports.markAttendance = async (req, res) => {
   const { adminId, employeeId } = req.body;
-
   if (!adminId || !employeeId)
     return res.status(400).json({ success: false, message: 'Missing adminId or employeeId' });
 
   const adminDb = getAdminDb(adminId);
   const Employee = adminDb.model('Employee', EmployeeSchema);
-  const emp = await Employee.findById(employeeId);
+
+  const emp = await Employee.findOne({ employeeId });  // 👈 change here
   if (!emp) return res.status(404).json({ success: false, message: 'Employee not found' });
 
   emp.attendance.push(new Date());
@@ -76,6 +77,7 @@ exports.markAttendance = async (req, res) => {
 
   res.json({ success: true, message: 'Attendance marked' });
 };
+
 
 // Admin login
 exports.login = async (req, res) => {
@@ -95,4 +97,23 @@ exports.getEmployees = async (req, res) => {
   const Employee = adminDb.model('Employee', EmployeeSchema);
   const employees = await Employee.find({}, 'employeeId fullName department');
   res.json({ success: true, employees });
+};
+// controller.js (add this near other exports)
+exports.getEmployeesWithEncodings = async (req, res) => {
+  const { adminId } = req.query;
+  if (!adminId)
+    return res.status(400).json({ success: false, message: 'Missing adminId' });
+
+  try {
+    const adminDb = getAdminDb(adminId);
+    const Employee = adminDb.model('Employee', EmployeeSchema);
+
+    // Only the fields needed for recognition
+    const employees = await Employee.find({}, 'employeeId fullName faceEncodings').lean();
+
+    res.json({ success: true, employees });
+  } catch (err) {
+    console.error('getEmployeesWithEncodings error:', err);
+    res.status(500).json({ success: false, message: 'Failed to fetch encodings' });
+  }
 };
