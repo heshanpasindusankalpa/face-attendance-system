@@ -1,47 +1,122 @@
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+/* ===== Global Layout ===== */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e0f2ff, #f8fbff);
+  margin: 0;
+  padding: 0;
+  color: #1b2a4e;
+}
+
+/* ===== Container ===== */
+.container2 {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(27, 42, 78, 0.15);
+  animation: fadeIn 0.8s ease;
+}
+
+.container h1 {
   text-align: center;
+  color: #0d47a1;
+  margin-bottom: 20px;
+  font-size: 2rem;
 }
 
-.camera-container {
-  margin: 20px 0;
-  position: relative;
-}
-
-.scan-button, .reset-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 10px 5px;
-}
-
-.reset-button {
-  background-color: #f44336;
-}
-
-.scan-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+/* ===== Message Boxes ===== */
+.success {
+  background: #e3f2fd;
+  border-left: 5px solid #1976d2;
+  color: #0d47a1;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  border-radius: 6px;
 }
 
 .error {
-  color: #ff0000;
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #ffeeee;
-  border-radius: 4px;
+  background: #ffebee;
+  border-left: 5px solid #d32f2f;
+  color: #b71c1c;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  border-radius: 6px;
 }
 
-.success {
-  color: #008000;
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #eeffee;
-  border-radius: 4px;
+/* ===== Camera Selector ===== */
+select {
+  background: #f5faff;
+  border: 1px solid #90caf9;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #0d47a1;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+select:hover,
+select:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 6px rgba(25, 118, 210, 0.3);
+}
+
+/* ===== Webcam & Image ===== */
+.camera-container {
+  text-align: center;
+}
+
+.camera-container img,
+.camera-container video {
+  border-radius: 12px;
+  border: 2px solid #bbdefb;
+  margin-bottom: 16px;
+  background: #000;
+}
+
+/* ===== Buttons ===== */
+button {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 22px;
+  margin: 6px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.scan-button {
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(25, 118, 210, 0.3);
+}
+
+.scan-button:hover {
+  background: linear-gradient(135deg, #1565c0, #1e88e5);
+  transform: translateY(-2px);
+}
+
+.reset-button {
+  background: #e3f2fd;
+  color: #0d47a1;
+  border: 1px solid #90caf9;
+}
+
+.reset-button:hover {
+  background: #bbdefb;
+  transform: translateY(-2px);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
