@@ -5,6 +5,7 @@ import LoginPage from './Pages/Login/Login';
 import RegistrationPage from './Pages/Registration/Reg';
 import RegisterAdminPage from './Pages/RegisterAdmin/RegisterAdmin';
 import AttendancePage from './Pages/Attendance/Attendance';
+import AttendanceDebug from './Pages/Attendance/AttendanceDebug';
 import './App.css';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/Reg" element={<RegistrationPage />} />
         <Route path="/admin-register" element={<RegisterAdminPage />} />
         <Route path="/attendance" element={<AttendancePage />} />
+        <Route path="/attendancedebug" element={<AttendanceDebug />} />
          
     
       </Routes>
