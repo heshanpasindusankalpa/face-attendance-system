@@ -28,6 +28,8 @@ export default function Attendance() {
       if (!imageSrc) {
         throw new Error('Failed to capture image');
       }
+      console.log('Screenshot length:', imageSrc.length); // should be thousands of chars
+      console.log('Screenshot prefix:', imageSrc.slice(0, 30)); // should start with "data:image/jpeg;base64,"
 
       const response = await fetch('http://localhost:5000/recognize_face', {
         method: 'POST',
@@ -76,6 +78,7 @@ export default function Attendance() {
             screenshotFormat="image/jpeg"
             width={640}
             height={480}
+            videoConstraints={{ width: 640, height: 480, facingMode: 'user' }}
           />
         </div>
 
