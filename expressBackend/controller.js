@@ -117,3 +117,73 @@ exports.getEmployeesWithEncodings = async (req, res) => {
     res.status(500).json({ success: false, message: 'Failed to fetch encodings' });
   }
 };
+exports.listEmployees = async (req, res) => {
+  const { adminId, q = "", department } = req.query;
+  if (!adminId) return res.status(400).json({ success: false, message: 'Missing adminId' });
+
+  const adminDb = getAdminDb(adminId);
+  const Employee = adminDb.model('Employee', EmployeeSchema);
+
+  const filter = {};
+  if (department && department !== "All") filter.department = department;
+
+  if (q) {
+    const rx = new RegExp(q, 'i');
+    filter.$or = [
+      { fullName: rx },
+      { employeeId: rx },
+      { position: rx },
+      { email: rx },
+    ];
+  }
+
+  const docs = await Employee.find(filter).lean();
+  // last check-in = last date in attendance array
+  const employees = docs.map(d => ({
+    employeeId: d.employeeId,
+    fullName: d.fullName,
+    department: d.department,
+    position: d.position,
+    email: d.email,
+    lastCheckIn: d.attendance && d.attendance.length ? d.attendance[d.attendance.length - 1] : null
+  }));
+
+  res.json({ success: true, employees });
+};
+
+exports.updateEmployee = async (req, res) => {
+  const { adminId } = req.query;
+  const { employeeId } = req.params;
+  const { fullName, department, position, email } = req.body;
+
+  if (!adminId || !employeeId)
+    return res.status(400).json({ success: false, message: 'Missing adminId or employeeId' });
+
+  const adminDb = getAdminDb(adminId);
+  const Employee = adminDb.model('Employee', EmployeeSchema);
+
+  const updated = await Employee.findOneAndUpdate(
+    { employeeId },
+    { $set: { fullName, department, position, email } },
+    { new: true }
+  ).lean();
+
+  if (!updated) return res.status(404).json({ success: false, message: 'Employee not found' });
+  res.json({ success: true, message: 'Employee updated' });
+};
+
+exports.deleteEmployee = async (req, res) => {
+  const { adminId } = req.query;
+  const { employeeId } = req.params;
+
+  if (!adminId || !employeeId)
+    return res.status(400).json({ success: false, message: 'Missing adminId or employeeId' });
+
+  const adminDb = getAdminDb(adminId);
+  const Employee = adminDb.model('Employee', EmployeeSchema);
+
+  const del = await Employee.findOneAndDelete({ employeeId });
+  if (!del) return res.status(404).json({ success: false, message: 'Employee not found' });
+  res.json({ success: true, message: 'Employee deleted' });
+};
+
