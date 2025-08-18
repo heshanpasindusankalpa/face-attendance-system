@@ -14,7 +14,9 @@ export default function Home() {
           <div className="text-content">
             <h1>
               We <span className="highlight">simplify</span> attendance <br />
-              with <span className="brand">FaceEntry</span>.
+              <div className="brand-text">
+              <span className='with'>with</span> <span className="brand1">Face</span><span className="brand2">Entry.</span>
+              </div>
             </h1>
             <div className="button-group">
               <button className="btn-primary">Get Started</button>

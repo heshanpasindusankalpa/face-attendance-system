@@ -28,7 +28,7 @@ export default function Login() {
       const data = await res.json();
       if (res.ok && data.success && data.adminId) {
         localStorage.setItem('adminId', data.adminId);
-        navigate('/reg'); // Navigate to employee registration after login
+        navigate('/employees'); // Navigate to employee registration after login
       } else {
         setError(data.message || 'Invalid credentials');
       }

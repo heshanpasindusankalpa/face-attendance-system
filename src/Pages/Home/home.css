@@ -25,15 +25,36 @@
   font-size: 2.5rem;
   line-height: 1.4;
 }
+.brand-text {
+  white-space: nowrap
+}
+.with {
+  font-size: 4.5rem;
+  line-height: 1.4;
+}
+.brand1 {
+  font-size: 4.5rem;
+  line-height: 1.4;
+}
+.brand2 {
+  font-size: 4.5rem;
+  line-height: 1.4;
+}
+
 
 .highlight {
   color: #6c63ff;
 }
 
-.brand {
+.brand1 {
   color: #0052cc;
   font-weight: bold;
 }
+.brand2 {
+  color: black;
+  font-weight: bold;
+}
+
 
 .button-group {
   margin-top: 20px;
