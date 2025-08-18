@@ -6,6 +6,7 @@ import RegistrationPage from './Pages/Registration/Reg';
 import RegisterAdminPage from './Pages/RegisterAdmin/RegisterAdmin';
 import AttendancePage from './Pages/Attendance/Attendance';
 import AttendanceDebug from './Pages/Attendance/AttendanceDebug';
+import EmployeesPage from './Pages/EmployeesPage/EmployeesPage';
 import './App.css';
 
 export default function App() {
@@ -20,6 +21,8 @@ export default function App() {
         <Route path="/admin-register" element={<RegisterAdminPage />} />
         <Route path="/attendance" element={<AttendancePage />} />
         <Route path="/attendancedebug" element={<AttendanceDebug />} />
+        <Route path="/employees" element={<EmployeesPage />} />
+         
          
     
       </Routes>
