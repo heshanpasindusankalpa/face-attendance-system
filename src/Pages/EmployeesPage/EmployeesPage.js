@@ -148,7 +148,7 @@ export default function EmployeesPage() {
         <h2>Employee Management</h2>
         <div className="header-actions">
           <button className="btn-light" onClick={exportCSV}>📄 Export Report</button>
-          <button className="btn-primary" onClick={() => navigate("/register")}>➕ Add Employee</button>
+          <button className="btn-primary" onClick={() => navigate("/reg")}>➕ Add Employee</button>
         </div>
       </div>
 
