@@ -7,6 +7,7 @@ import RegisterAdminPage from './Pages/RegisterAdmin/RegisterAdmin';
 import AttendancePage from './Pages/Attendance/Attendance';
 import AttendanceDebug from './Pages/Attendance/AttendanceDebug';
 import EmployeesPage from './Pages/EmployeesPage/EmployeesPage';
+import AboutPage from './Pages/About/About';
 import './App.css';
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/attendance" element={<AttendancePage />} />
         <Route path="/attendancedebug" element={<AttendanceDebug />} />
         <Route path="/employees" element={<EmployeesPage />} />
+        <Route path="/about" element={<AboutPage />} />
          
          
     

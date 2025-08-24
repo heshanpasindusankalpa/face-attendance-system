@@ -1,21 +1,17 @@
-.home-container {
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
-}
-
 /* Hero Section */
 .hero-section {
   height: 100vh;
-  background: #fff;
+  background: #010c2f;
   display: flex;
   align-items: center;
-  /*justify-content: center;*/
   padding: 0 5%;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-content {
   display: flex;
-  justify-content: flex-start; /* Align items at start */
+  justify-content: space-between;  /* Updated to space the content */
   align-items: center;
   width: 100%;
   max-width: 1200px;
@@ -24,53 +20,94 @@
 .text-content h1 {
   font-size: 2.5rem;
   line-height: 1.4;
+  color: white;
 }
+
 .brand-text {
-  white-space: nowrap
+  white-space: nowrap;
 }
+
 .with {
   font-size: 4.5rem;
   line-height: 1.4;
 }
+
 .brand1 {
   font-size: 4.5rem;
   line-height: 1.4;
 }
+
 .brand2 {
   font-size: 4.5rem;
   line-height: 1.4;
 }
 
-
 .highlight {
-  color: #6c63ff;
+  color: #e5e5ec;
 }
 
 .brand1 {
   color: #0052cc;
   font-weight: bold;
 }
+
 .brand2 {
-  color: black;
+  color: rgb(245, 236, 236);
   font-weight: bold;
 }
 
-
-.button-group {
-  margin-top: 20px;
+.hero-bg {
+  position: relative;
 }
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  z-index: 0;                /* behind content */
+  right: -20vw;              /* push it off the edge for that cropped look */
+  top: -10vw;
+  width: 80vw;               /* responsive size */
+  height: 80vw;
+  border-radius: 40%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(56, 132, 255, 0.12) 0%,
+    rgba(56, 132, 255, 0.12) 40%,
+    rgba(56, 132, 255, 0.06) 60%,
+    rgba(56, 132, 255, 0.00) 75%
+  );
+  pointer-events: none;
+}
+
+/* Ensure real content sits above */
+.text-content { 
+  position: relative; 
+  z-index: 1; 
+  margin-top: 400px; ;
+}
+ .image-content { 
+  position: relative; 
+  z-index: 1; 
+}
+
+
 
 /* Buttons */
 .btn-primary,
 .btn-outline {
-  padding: 16px 32px;        /* larger clickable area */
-  font-size: 1.2rem;         /* bigger text */
-  border-radius: 10px;       /* rounded corners */
+  display: inline-flex;       
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  font-size: 1.2rem;           
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s ease; /* smooth hover effect */
-  min-width: 150px;          /* uniform button width */
+  transition: all 0.3s ease;
+  width: 180px;                /* FIX: force same width */
+  height: 55px;                /* FIX: force same height */
   font-weight: bold;
-  margin-left: 20px
+  margin-left: 20px;
+  box-sizing: border-box;      /* border won’t change size */
 }
 
 /* Primary button style */
@@ -87,8 +124,8 @@
 /* Outline button style */
 .btn-outline {
   background: none;
-  border: 2px solid #0052cc;
-  color: #0052cc;
+  border: 2px solid #f9fbfd;
+  color: #fafafb;
 }
 
 .btn-outline:hover {
@@ -96,21 +133,44 @@
   color: white;
 }
 
-
+/* Image content */
 .image-content {
+  flex:1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+ /* Ensures both images are separated */
+  width: 200%;  /* Ensures the content takes the full width */
   position: relative;
-  left: 400px; /* moves it right */
+  gap: 30px; /* Space between images */
+ 
 }
 
+/* Left image */
+.hero-image-left {
+  max-width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-right: auto;
+  margin-left: 0;
+}
 
-.hero-image {
-  max-width: 700px;
+/* Right image */
+.hero-image-right {
+ max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-top: 60px;
+}
+
+.hero-image-left, .hero-image-right {
+  border-radius: 15px;
 }
 
 /* Footer Section */
 .footer-section {
   height: 100vh;
-  background: #f7f9fc;
+  background: #5188da;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -144,6 +204,6 @@
 
 .footer-social a {
   margin: 0 10px;
-  color: #0052cc;
+  color: #eff1f5;
   font-size: 1.5rem;
 }

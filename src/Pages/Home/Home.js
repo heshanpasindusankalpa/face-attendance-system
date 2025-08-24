@@ -1,9 +1,14 @@
 import React from 'react';
 import NavBar from '../../components/Navigation/NavBar';
+import heroImage2 from '../../Images/fr.gif';
 import heroImage from '../../Images/hero-image.png';
+import { useNavigate } from 'react-router-dom';
 import './home.css';
 
 export default function Home() {
+  const navigate = useNavigate();
+  const handleAdminRegister = () => navigate('/admin-register');
+  const handleLogin = () => navigate('/login');
   return (
     <div className="home-container">
       <NavBar />
@@ -15,16 +20,21 @@ export default function Home() {
             <h1>
               We <span className="highlight">simplify</span> attendance <br />
               <div className="brand-text">
-              <span className='with'>with</span> <span className="brand1">Face</span><span className="brand2">Entry.</span>
+                <span className='with'>with</span> <span className="brand1">Face</span><span className="brand2">Entry.</span>
               </div>
             </h1>
             <div className="button-group">
-              <button className="btn-primary">Get Started</button>
-              <button className="btn-outline">Register</button>
+              <button onClick={handleAdminRegister} className="btn-primary">Get Started</button>
+              <button onClick={handleLogin} className="btn-outline">Login</button>
             </div>
           </div>
           <div className="image-content">
-            <img src={heroImage} alt="Face Entry Illustration" className="hero-image" />
+            <div className="hero-image-left">
+              <img src={heroImage2} alt="Face Entry Illustration" className="hero-image-left" />
+            </div>
+            <div className="hero-image-right">
+              <img src={heroImage} alt="Face Entry Animation" className="hero-image-right" />
+            </div>
           </div>
         </div>
       </section>

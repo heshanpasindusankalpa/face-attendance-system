@@ -2,27 +2,35 @@
   width: 100%;
   max-width: 400px;
   margin: 50px auto;
-  padding: 30px;
+  padding: 30px 26px 26px;
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   font-family: 'Segoe UI', sans-serif;
+}
+
+
+.login-top-image {
+  text-align: center;
+  margin-bottom: 16px;
+
+}
+.login-top-image img {
+  width: 96px;              /* adjust as needed */
+  height: 96px;
+  object-fit: cover;
+  border-radius: 12px;       /* use 50% for a circle avatar */
+  box-shadow: 0 8px 16px rgba(0, 120, 215, 0.18);
 }
 
 .login-header {
   text-align: center;
-  margin-bottom: 25px;
-}
-
-.login-icon {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .login-header h1 {
   font-size: 22px;
-  margin: 10px 0;
+  margin: 8px 0 6px;
   color: #333;
 }
 
@@ -31,16 +39,9 @@
   color: #666;
 }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.login-form label {
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
+/* keep your existing styles below */
+.login-form { display: flex; flex-direction: column; }
+.login-form label { margin-bottom: 5px; font-weight: 500; }
 .login-form input {
   padding: 10px;
   margin-bottom: 15px;
@@ -57,34 +58,22 @@
   border-radius: 6px;
   cursor: pointer;
   font-size: 15px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.25s ease, transform 0.06s ease;
 }
+.login-button:hover { background-color: #005a9e; }
+.login-button:active { transform: translateY(1px); }
 
-.login-button:hover {
-  background-color: #005a9e;
-}
-
-.security-note {
-  font-size: 12px;
-  color: #777;
-  text-align: center;
-  margin-top: 20px;
-}
-.login-top-image {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.login-top-image img {
-  width: 90px; /* Adjust size as needed */
-  height: 90px;
+.error-message {
+  background: #ffeff0;
+  color: #a5232a;
+  border: 1px solid #ffd0d3;
+  padding: 10px 12px;
   border-radius: 8px;
-}
-.admin-register-link {
-  margin-top: 20px;
-  text-align: center;
+  margin-bottom: 12px;
 }
 
-.admin-register-link button {
-  margin-top: 5px;
+.admin-register-link {
+  margin-top: 16px;
+  text-align: center;
 }
+.admin-register-link button { margin-top: 6px; }
