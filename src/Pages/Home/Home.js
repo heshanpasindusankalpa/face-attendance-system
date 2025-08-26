@@ -20,7 +20,7 @@ export default function Home() {
             <h1>
               We <span className="highlight">simplify</span> attendance <br />
               <div className="brand-text">
-                <span className='with'>with</span> <span className="brand1">Face</span><span className="brand2">Entry.</span>
+                <span className='with'>with</span> <span className="brand1">  Face</span><span className="brand2">Entry.</span>
               </div>
             </h1>
             <div className="button-group">

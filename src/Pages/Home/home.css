@@ -33,12 +33,12 @@
 }
 
 .brand1 {
-  font-size: 4.5rem;
+  font-size: 5rem;
   line-height: 1.4;
 }
 
 .brand2 {
-  font-size: 4.5rem;
+  font-size: 5rem;
   line-height: 1.4;
 }
 
@@ -84,6 +84,7 @@
   position: relative; 
   z-index: 1; 
   margin-top: 400px; ;
+  margin-left: 70px;
 }
  .image-content { 
   position: relative; 
@@ -106,13 +107,13 @@
   width: 180px;                /* FIX: force same width */
   height: 55px;                /* FIX: force same height */
   font-weight: bold;
-  margin-left: 20px;
+  margin-left: 60px;
   box-sizing: border-box;      /* border won’t change size */
 }
 
 /* Primary button style */
 .btn-primary {
-  background-color: #0052cc;
+  background-color: #f5f7f9;
   color: white;
   border: none;
 }
@@ -125,7 +126,7 @@
 .btn-outline {
   background: none;
   border: 2px solid #f9fbfd;
-  color: #fafafb;
+  color: #fbfcfe;
 }
 
 .btn-outline:hover {
@@ -135,42 +136,37 @@
 
 /* Image content */
 .image-content {
-  flex:1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;  /* Align items to the left */
   align-items: center;
- /* Ensures both images are separated */
-  width: 200%;  /* Ensures the content takes the full width */
-  position: relative;
-  gap: 30px; /* Space between images */
- 
+  width: 100%;  /* Ensures the content takes the full width */
+  position: relative;  /* To allow absolute positioning of the left image */
 }
 
 /* Left image */
 .hero-image-left {
-  max-width: 400px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  margin-right: auto;
-  margin-left: 0;
+  position: absolute; /* This will position it freely within the parent container */
+  left: -190px;  /* Moves the left image outside to the left */
+  max-width: 500px;  /* Controls size of the first image */
+  margin-bottom: 550px; /* Space between images */
 }
 
 /* Right image */
 .hero-image-right {
- max-width: 500px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  margin-top: 60px;
+  max-width: 700px;  /* Controls size of the second image */
+  margin-left: 200px;  /* Space between left and right images */
+  margin-top: 20px; /* Space between images */
 }
 
 .hero-image-left, .hero-image-right {
   border-radius: 15px;
 }
 
+
 /* Footer Section */
 .footer-section {
   height: 100vh;
-  background: #5188da;
+  background: #f4f5f6;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
