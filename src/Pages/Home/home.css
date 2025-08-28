@@ -104,11 +104,11 @@
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 180px;                /* FIX: force same width */
-  height: 55px;                /* FIX: force same height */
+  width: 180px;               
+  height: 55px;               
   font-weight: bold;
   margin-left: 60px;
-  box-sizing: border-box;      /* border won’t change size */
+  box-sizing: border-box;      
 }
 
 /* Primary button style */
