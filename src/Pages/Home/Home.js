@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from '../../components/Navigation/NavBar';
 import heroImage2 from '../../Images/fr.gif';
 import heroImage from '../../Images/hero-image.png';
+import twitterIcon from '../../Images/twitter.png';
 import { useNavigate } from 'react-router-dom';
 import './home.css';
 
@@ -40,39 +41,50 @@ export default function Home() {
       </section>
 
       {/* Section 2: Footer */}
-      <section className="footer-section">
-        <div className="footer-content">
-          <div className="footer-left">
-            <h2 className="brand">FaceEntry</h2>
-            <p>FaceEntry isfbsg....... </p>
-            <p>
-              Address: Address sdfsdfjlj <br />
-              face@gmail.com
-            </p>
-            <p>
-              Contact Details: <br />
-              001-234012 <br />
-              076-5342342 <br />
-              pasinduprasad.pasu02@gmail.com
-            </p>
-          </div>
+<section className="footer-section">
+  <div className="footer-container">
+    {/* Left Section */}
+    <div className="footer-left">
+      <h2 className="brand">FaceEntry</h2>
+      <p>
+        FaceEntry is a modern facial recognition system for secure and seamless entry management.
+      </p>
+      <p>
+        <strong>Address:</strong> 123 Main Street, Colombo <br />
+        <strong>Email:</strong> face@gmail.com
+      </p>
+      <p>
+        <strong>Contact:</strong> <br />
+        001-234012 <br />
+        076-5342342 <br />
+        pasinduprasad.pasu02@gmail.com
+      </p>
+    </div>
 
-          <div className="footer-right">
-            <h3>Legal</h3>
-            <ul>
-              <li>Contact</li>
-              <li>Privacy Policy</li>
-              <li>Terms & Conditions</li>
-            </ul>
-          </div>
-        </div>
+    {/* Right Section */}
+    <div className="footer-right">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
 
-        <div className="footer-social">
-          <a href="#"><i className="fab fa-twitter"></i></a>
-          <a href="#"><i className="fab fa-linkedin"></i></a>
-          <a href="#"><i className="fab fa-facebook"></i></a>
-        </div>
-      </section>
+      <h3>Follow Us</h3>
+      <div className="footer-social">
+        <a href="#" className="social twitter"><i className="fab fa-twitter"></i><img src="/images/twitter.png" alt="Twitter" /></a>
+        <a href="#" className="social linkedin"><i className="fab fa-linkedin"></i></a>
+        <a href="#" className="social facebook"><i className="fab fa-facebook-f"></i></a>
+        <a href="#" className="social instagram"><i className="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div className="footer-bottom">
+    <p>© 2025 FaceEntry. All Rights Reserved.</p>
+  </div>
+</section>
+
     </div>
   );
 }
