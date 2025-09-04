@@ -240,14 +240,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 35px; /* Reduced size */
-  height: 35px; /* Reduced size */
+  width: 30px; /* Reduced size */
+  height: 30px; /* Reduced size */
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
-  font-size: 1rem; /* Smaller font size */
+  font-size: 0.8rem; /* Adjusted font size */
   transition: 0.3s;
 }
+
 
 .footer-social a:hover {
   background: #fff;
