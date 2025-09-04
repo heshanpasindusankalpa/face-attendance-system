@@ -72,7 +72,7 @@ export default function Home() {
 
       <h3>Follow Us</h3>
       <div className="footer-social">
-        <a href="#" className="social twitter"><i className="fab fa-twitter"></i><img src={twitterIcon}  alt="Twitter" /></a>
+        <a href="#" className="social twitter"><i className="fab fa-twitter"></i></a>
         <a href="#" className="social linkedin"><i className="fab fa-linkedin"></i></a>
         <a href="#" className="social facebook"><i className="fab fa-facebook-f"></i></a>
         <a href="#" className="social instagram"><i className="fab fa-instagram"></i></a>
