@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./employeespage.css";
 
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 5;
 
 export default function EmployeesPage() {
   const navigate = useNavigate();
@@ -223,6 +223,15 @@ export default function EmployeesPage() {
           ))}
           <button disabled={page === totalPages} onClick={() => setPage(p => p + 1)}>Next</button>
         </div>
+        <div style={{ marginTop: 20, textAlign: "center" }}>
+        <button
+          className="btn-primary"
+          onClick={() => navigate("/attendance")}
+        >
+          📝 Mark Attendance
+        </button>
+      </div>
+
       </div>
 
       {/* Edit Modal */}
