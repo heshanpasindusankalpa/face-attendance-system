@@ -20,6 +20,8 @@ export default function Reg() {
     email: "",
     faceEncodings: [], // will fill with 5 encodings
   });
+  const departments = ["HR", "Finance", "Engineering", "Sales", "Marketing"];
+  const positions = ["Manager", "Engineer", "Technician", "Admin", "Intern"];
 
   // Capture 5 frames in the BROWSER (no Flask camera)
   const captureFrames = async () => {
@@ -185,18 +187,32 @@ export default function Reg() {
             />
 
             <label>Department</label>
-            <input
+            <select
               value={emp.department}
               onChange={(e) => setEmp({ ...emp, department: e.target.value })}
               required
-            />
+            >
+              <option value="">Select Department</option>
+              {departments.map((dept) => (
+                <option key={dept} value={dept}>
+                  {dept}
+                </option>
+              ))}
+            </select>
 
             <label>Position</label>
-            <input
+            <select
               value={emp.position}
               onChange={(e) => setEmp({ ...emp, position: e.target.value })}
               required
-            />
+            >
+              <option value="">Select Position</option>
+              {positions.map((pos) => (
+                <option key={pos} value={pos}>
+                  {pos}
+                </option>
+              ))}
+            </select>
 
             <label>Email</label>
             <input
