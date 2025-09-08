@@ -130,7 +130,7 @@ export default function Reg() {
   };
 
   return (
-    <div className="container">
+    <div className="reg-container">
       <h1>Employee Registration</h1>
       {error && <div className="error-message">{error}</div>}
 
