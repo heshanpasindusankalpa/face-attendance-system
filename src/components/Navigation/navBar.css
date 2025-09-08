@@ -68,7 +68,9 @@
     justify-content: flex-end;
     padding-right: 20px;
  }
- 
+ .RegisterButton{
+   background-color: green;
+ }
  .navBarLinks {
     display: flex;
     align-items: center;
