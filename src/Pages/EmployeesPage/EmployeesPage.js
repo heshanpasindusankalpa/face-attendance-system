@@ -224,15 +224,16 @@ export default function EmployeesPage() {
           <button disabled={page === totalPages} onClick={() => setPage(p => p + 1)}>Next</button>
         </div>
         <div style={{ marginTop: 20, textAlign: "center" }}>
-        <button
+        
+      </div>
+
+      </div>
+       <button
           className="btn-primary"
           onClick={() => navigate("/attendance")}
         >
           📝 Mark Attendance
         </button>
-      </div>
-
-      </div>
 
       {/* Edit Modal */}
       {editing && (
