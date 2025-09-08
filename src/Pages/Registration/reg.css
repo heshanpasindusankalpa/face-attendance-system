@@ -1,5 +1,5 @@
 /* Container Styling */
-.container {
+.reg-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,9 +11,9 @@
 }
 
 /* Title */
-h1 {
-  margin-top: 20px;
-  font-size: 2.2rem;
+.reg-container h1 {
+  margin-top: 10px;
+  font-size: 3.2rem;
   color: #080707;
   font-weight: 700;
   text-align: center;
@@ -65,13 +65,14 @@ h1 {
 
 /* Camera Box */
 .capture-box {
-  width: 100%;
+  width: 60%;
   height: 300px;
   border: 2px dashed #007bff;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto 15px;  
   margin-bottom: 15px;
   background: #f8faff;
   overflow: hidden;
@@ -140,13 +141,15 @@ h1 {
   color: #555;
 }
 
-.employee-details input {
-  margin-bottom: 12px;
-  padding: 10px;
+.employee-details input,
+.employee-details select {
+  margin-bottom: 15px;
+  padding: 12px;
   border: 1.5px solid #ccc;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: #f9f9f9;
 }
 
 .employee-details input:focus {
@@ -162,7 +165,7 @@ h1 {
 
 .submit-button {
   padding: 12px 24px;
-  background: linear-gradient(90deg, #284ea7, #213788);
+  background: linear-gradient(90deg, #2ea728, #218858);
   color: white;
   font-size: 1.05rem;
   border: none;
