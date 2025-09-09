@@ -41,6 +41,7 @@ export default function Login() {
   const handleAdminRegister = () => navigate('/admin-register');
 
   return (
+     <div className="login-page">
     <div className="login-container">
     
       <div className="login-top-image" aria-hidden="true">
@@ -82,6 +83,7 @@ export default function Login() {
           Register as Admin
         </button>
       </div>
+    </div>
     </div>
   );
 }
