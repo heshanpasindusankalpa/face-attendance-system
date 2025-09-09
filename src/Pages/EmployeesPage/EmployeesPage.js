@@ -143,6 +143,7 @@ export default function EmployeesPage() {
   };
 
   return (
+    <div className="Employee-page">
     <div className="emp-container">
       <div className="emp-header">
         <h2>Employee Management</h2>
@@ -195,7 +196,7 @@ export default function EmployeesPage() {
                     <div className="emp-sub">ID: {e.employeeId}</div>
                   </div>
                 </td>
-                <td>{e.department || "—"}</td>
+                  <td><b>{e.department || "—"}</b></td>
                 <td>
                   <span className="badge badge-green">Present</span>
                 </td>
@@ -255,6 +256,7 @@ export default function EmployeesPage() {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }
