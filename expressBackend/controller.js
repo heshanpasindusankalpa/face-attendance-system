@@ -186,4 +186,3 @@ exports.deleteEmployee = async (req, res) => {
   if (!del) return res.status(404).json({ success: false, message: 'Employee not found' });
   res.json({ success: true, message: 'Employee deleted' });
 };
-
