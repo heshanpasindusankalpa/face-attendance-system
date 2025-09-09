@@ -1,11 +1,43 @@
+
+.Employee-page {
+  background-color: #010c2f;  /* page-specific background */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.emp-table .emp-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.emp-table td b {
+  font-size: 1.15rem;
+}
+/* Reduce table row height */
+.emp-table tr {
+  height: 25px;
+}/*
 .emp-container {
-  max-width: 80%;
+  max-width: 100%;
   margin: 36px auto;
   padding: 0 16px;
   color: #0f1d3a;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}*/
+.emp-container {
+  max-width: 100%;   /* allow full width */
+  width: 80%;        /* occupy most of the screen */
+  margin: 20px auto;
+  padding: 0 10px;
 }
-
+.table-wrap {
+  width: 100%;       /* table takes full container */
+  overflow-x: auto;  /* scroll horizontally if content is too wide */
+}
+.emp-table {
+  width: 100%;
+  min-width: 900px;  /* ensures columns are not squished */
+}
 .emp-header {
   display: flex;
   align-items: center;
@@ -17,6 +49,7 @@
   margin: 0;
   font-size: 1.8rem;
   font-weight: 800;
+  color: rgb(106, 163, 243);
 }
 
 .header-actions { display: flex; gap: 10px; }
@@ -125,7 +158,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-right: 6px;
 }
 .actions .icon-btn:hover { transform: translateY(-1px); }
