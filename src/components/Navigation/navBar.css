@@ -69,7 +69,8 @@
     padding-right: 20px;
  }
  .RegisterButton{
-   background-color: green;
+   background-color:blue;
+   color: aliceblue;
  }
  .navBarLinks {
     display: flex;

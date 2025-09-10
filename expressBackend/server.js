@@ -14,7 +14,7 @@ const app = express();
 const port = 3001;
 const host = 'localhost';
 
-// ✅ Apply middleware before routes
+//Apply middleware before routes
 app.use(helmet());
 
 app.use(cors({
@@ -28,34 +28,34 @@ app.use(cors({
 app.options('*', cors());
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
 
-// ✅ THIS MUST COME BEFORE app.use('/api', router)
+// THIS MUST COME BEFORE app.use('/api', router)
 app.use(express.json()); // 👈 THIS IS REQUIRED
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Add a body logger for debugging
+//  Add a body logger for debugging
 app.use((req, res, next) => {
   console.log(`[${req.method}] ${req.url}`);
   console.log('Body:', req.body);
   next();
 });
 
-// ✅ Routes
+// Routes
 app.use('/api', router);
 
-// ✅ Health check
+//  Health check
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK' });
 });
 
 
 
-// ✅ Error handler
+//  Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Internal Server Error' });
 });
 
-// ✅ Connect DB and start server
+//  Connect DB and start server
 mongoose.connect(
   'mongodb+srv://pasindusankalpa2021:QF5WTOkietfbnoLV@cluster0.u3yt5.mongodb.net/main_admin_db?retryWrites=true&w=majority',
   { useNewUrlParser: true, useUnifiedTopology: true }
