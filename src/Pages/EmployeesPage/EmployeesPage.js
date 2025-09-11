@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./employeespage.css";
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 4;
 
 export default function EmployeesPage() {
   const navigate = useNavigate();
