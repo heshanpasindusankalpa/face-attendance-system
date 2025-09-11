@@ -102,6 +102,7 @@ export default function Attendance() {
   };
 
   return (
+    <div className="attendance">
     <div className="container2">
       <h1>Face Recognition Attendance</h1>
 
@@ -131,27 +132,27 @@ export default function Attendance() {
         {/* Webcam visible unless we’re showing the processed server image */}
         <div style={{ display: processedImage ? "none" : "block" }}>
           <Webcam
-            audio={false}
-            ref={webcamRef}
-            mirrored={true}
-            screenshotFormat="image/jpeg"
-            screenshotQuality={0.92}
-            width={640}
-            height={480}
-            videoConstraints={videoConstraints}
-            onUserMedia={() => setIsReady(true)}
-            onUserMediaError={(e) => {
-              setIsReady(false);
-              setMessage("Camera error: " + (e?.message || "unknown"));
-            }}
-          />
+  audio={false}
+  ref={webcamRef}
+  mirrored={true}
+  screenshotFormat="image/jpeg"
+  screenshotQuality={0.92}
+  videoConstraints={videoConstraints}
+  onUserMedia={() => setIsReady(true)}
+  onUserMediaError={(e) => {
+    setIsReady(false);
+    setMessage("Camera error: " + (e?.message || "unknown"));
+  }}
+  className="webcam"
+/>
+
         </div>
 
         {processedImage && (
           <img
             src={processedImage}
             alt="Processed Result"
-            style={{ width: 640, height: 480, borderRadius: 6 }}
+            
           />
         )}
 
@@ -172,6 +173,7 @@ export default function Attendance() {
           </button>
         )}
       </div>
+    </div>
     </div>
   );
 }
