@@ -135,7 +135,7 @@
 .emp-table tbody td {
   padding: 14px;
   border-bottom: 1px solid #f0f3fa;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .emp-cell .emp-name { font-weight: 700;font-size: 1rem; }
@@ -152,6 +152,11 @@
   background: #35cc76;
   color: #043019;
   border: 1px solid #71a88a;
+}
+.actions {
+  display: flex;          /* make children horizontal */
+  gap: 8px;               /* spacing between buttons */
+  align-items: center;    /* vertically center icons */
 }
 
 .actions .icon-btn {
