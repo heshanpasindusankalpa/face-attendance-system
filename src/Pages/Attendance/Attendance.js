@@ -16,7 +16,7 @@ export default function Attendance() {
 
   const adminId = localStorage.getItem("adminId");
 
-  // Ask permission once, then enumerate cameras
+ 
   useEffect(() => {
     (async () => {
       try {
@@ -24,7 +24,7 @@ export default function Attendance() {
         const list = await navigator.mediaDevices.enumerateDevices();
         const cams = list.filter((d) => d.kind === "videoinput");
         setDevices(cams);
-        // prefer a non-virtual cam if available
+       
         const preferred =
           cams.find((c) => !/obs|droid|virtual/i.test(c.label)) || cams[0];
         if (preferred) setDeviceId(preferred.deviceId);
@@ -38,7 +38,7 @@ export default function Attendance() {
     ? { width: 640, height: 480, deviceId: { exact: deviceId } }
     : { width: 640, height: 480, facingMode: "user" };
 
-  // Wait until the <video> element is actually playing
+  
   const waitForVideoReady = async (maxMs = 1500) => {
     const start = performance.now();
     while (performance.now() - start < maxMs) {
@@ -60,14 +60,14 @@ export default function Attendance() {
     setProcessedImage(null);
 
     try {
-      // ensure webcam stream is up
+     
       const ready = await waitForVideoReady();
       if (!ready) {
         setMessage("Camera not ready (video stream not started).");
         return;
       }
 
-      // capture (retry once if null)
+      
       let imageSrc = webcamRef.current.getScreenshot();
       if (!imageSrc) {
         await new Promise((r) => setTimeout(r, 100));
@@ -94,6 +94,7 @@ export default function Attendance() {
       if (data.processed_image) {
         setProcessedImage(data.processed_image);
       }
+      window.dispatchEvent(new Event("attendance-marked"));
     } catch (err) {
       setMessage(`Error: ${err.message}`);
     } finally {
@@ -112,7 +113,7 @@ export default function Attendance() {
         </div>
       )}
 
-      {/* Camera selector */}
+   
       <div style={{ marginBottom: 8 }}>
         <label style={{ marginRight: 8 }}><b>Camera</b></label>
         <select
@@ -129,7 +130,7 @@ export default function Attendance() {
       </div>
 
       <div className="camera-container">
-        {/* Webcam visible unless we’re showing the processed server image */}
+       
         <div style={{ display: processedImage ? "none" : "block" }}>
           <Webcam
   audio={false}

@@ -11,7 +11,7 @@
 
 .hero-content {
   display: flex;
-  justify-content: space-between;  /* Updated to space the content */
+  justify-content: space-between;  
   align-items: center;
   width: 100%;
   max-width: 1200px;
@@ -63,10 +63,10 @@
 .hero-bg::after {
   content: "";
   position: absolute;
-  z-index: 0;                /* behind content */
-  right: -20vw;              /* push it off the edge for that cropped look */
+  z-index: 0;               
+  right: -20vw;              
   top: -10vw;
-  width: 80vw;               /* responsive size */
+  width: 80vw;               
   height: 80vw;
   border-radius: 40%;
   background: radial-gradient(
@@ -151,11 +151,11 @@
   margin-bottom: 550px; /* Space between images */
 }
 
-/* Right image */
+
 .hero-image-right {
-  max-width: 700px;  /* Controls size of the second image */
-  margin-left: 200px;  /* Space between left and right images */
-  margin-top: 20px; /* Space between images */
+  max-width: 700px; 
+  margin-left: 200px;  
+  margin-top: 20px; 
 }
 
 .hero-image-left, .hero-image-right {
@@ -163,7 +163,7 @@
 }
 
 
-/* Footer Section */
+
 .footer-section {
   background: linear-gradient(135deg, #073e9c, #010917);
   color: #fff;
@@ -178,7 +178,7 @@
   gap: 80px;
 }
 
-/* Left Section */
+
 .footer-left {
   flex: 1 1 300px;
 }
@@ -196,7 +196,6 @@
   opacity: 0.85;
 }
 
-/* Right Section */
 .footer-right {
   flex: 1 1 200px;
 }
@@ -230,7 +229,7 @@
 }
 
 
-/* Social Media Icons */
+
 .footer-social {
   display: flex;
   gap: 15px;
@@ -240,12 +239,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px; /* Reduced size */
-  height: 30px; /* Reduced size */
+  width: 30px; 
+  height: 30px; 
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
-  font-size: 0.8rem; /* Adjusted font size */
+  font-size: 0.8rem; 
   transition: 0.3s;
 }
 
@@ -256,13 +255,13 @@
   transform: scale(1.1);
 }
 
-/* Individual social colors */
+
 .footer-social a.twitter:hover { color: #1DA1F2; }
 .footer-social a.linkedin:hover { color: #0077B5; }
 .footer-social a.facebook:hover { color: #4267B2; }
 .footer-social a.instagram:hover { color: #C13584; }
 
-/* Footer Bottom */
+
 .footer-bottom {
   text-align: center;
   margin-top: 40px;
@@ -273,7 +272,7 @@
 }
 
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;

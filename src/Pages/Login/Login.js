@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
-import loginIllustration from '../../Images/LoginImage.png'; // 👈 add your image here
-
+import loginIllustration from '../../Images/LoginImage.png';
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

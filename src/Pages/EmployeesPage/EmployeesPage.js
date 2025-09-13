@@ -15,10 +15,10 @@ export default function EmployeesPage() {
   const [page, setPage] = useState(1);
   const [error, setError] = useState("");
 
-  const [editing, setEditing] = useState(null); // employee being edited
+  const [editing, setEditing] = useState(null); 
   const [form, setForm] = useState({ fullName: "", department: "", position: "", email: "" });
 
-  // Fetch employees
+  // Fetch 
   const fetchEmployees = async () => {
     if (!adminId) return;
     setLoading(true);
@@ -41,13 +41,18 @@ export default function EmployeesPage() {
     fetchEmployees();
     // eslint-disable-next-line
   }, []);
+useEffect(() => {
+  const handler = () => fetchEmployees();
+  window.addEventListener("attendance-marked", handler);
+  return () => window.removeEventListener("attendance-marked", handler);
+}, []);
 
   const departments = useMemo(() => {
     const set = new Set(employees.map((e) => e.department).filter(Boolean));
     return ["All", ...Array.from(set)];
   }, [employees]);
 
-  // derive with search + filter
+  // search + filter
   const filtered = useMemo(() => {
     const term = q.trim().toLowerCase();
     let list = employees;
@@ -64,7 +69,7 @@ export default function EmployeesPage() {
     return list;
   }, [employees, q, dept]);
 
-  // pagination
+
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const current = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
@@ -73,7 +78,7 @@ export default function EmployeesPage() {
     setPage(1);
   }, [q, dept]);
 
-  // Delete
+  // Delete employee
   const onDelete = async (employeeId) => {
     if (!window.confirm("Delete this employee?")) return;
     try {
@@ -89,7 +94,7 @@ export default function EmployeesPage() {
     }
   };
 
-  // Edit
+
   const openEdit = (emp) => {
     setEditing(emp.employeeId);
     setForm({
@@ -119,7 +124,7 @@ export default function EmployeesPage() {
     }
   };
 
-  // Export CSV (client-side)
+ 
   const exportCSV = () => {
     const rows = [
       ["Employee ID", "Full Name", "Department", "Position", "Email", "Last Check-in"],
@@ -210,7 +215,7 @@ export default function EmployeesPage() {
           </tbody>
         </table>
 
-        {/* Pagination */}
+
         <div className="pager">
           <button disabled={page === 1} onClick={() => setPage(p => p - 1)}>Previous</button>
           {Array.from({ length: totalPages }).map((_, i) => (
@@ -236,7 +241,6 @@ export default function EmployeesPage() {
           📝 Mark Attendance
         </button>
 
-      {/* Edit Modal */}
       {editing && (
         <div className="modal-backdrop" onClick={() => setEditing(null)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>

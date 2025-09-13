@@ -40,10 +40,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 2: Footer */}
+
 <section className="footer-section">
   <div className="footer-container">
-    {/* Left Section */}
+   
     <div className="footer-left">
       <h2 className="brand">FaceEntry</h2>
       <p>

@@ -1,6 +1,6 @@
 
 .Employee-page {
-  background-color: #010c2f;  /* page-specific background */
+  background-color: #010c2f;  
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -25,18 +25,18 @@
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }*/
 .emp-container {
-  max-width: 100%;   /* allow full width */
-  width: 80%;        /* occupy most of the screen */
+  max-width: 100%;   
+  width: 80%;        
   margin: 20px auto;
   padding: 0 10px;
 }
 .table-wrap {
-  width: 100%;       /* table takes full container */
-  overflow-x: auto;  /* scroll horizontally if content is too wide */
+  width: 100%;       
+  overflow-x: auto;  
 }
 .emp-table {
   width: 100%;
-  min-width: 900px;  /* ensures columns are not squished */
+  min-width: 900px;  
 }
 .emp-header {
   display: flex;
@@ -80,23 +80,23 @@
   display: flex;
   gap: 10px;
   margin: 10px 0 14px 0;
+  align-items: center; 
 }
 
 .search-wrap {
   position: relative;
-  flex: 1;
+  flex: 1; 
+  min-width: 200px;
 }
 
 .search-wrap input {
   width: 100%;
+  height: 44px; 
   padding: 12px 14px 12px 40px;
   border-radius: 10px;
   border: 1px solid #d7e2f3;
   outline: none;
-}
-.search-wrap input:focus {
-  border-color: #a9c6ff;
-  box-shadow: 0 0 0 3px rgba(32, 101, 233, 0.12);
+  font-size: 1rem;
 }
 
 .search-icon {
@@ -105,14 +105,18 @@
   top: 50%;
   transform: translateY(-50%);
   opacity: 0.6;
+  font-size: 1rem;
 }
 
 .toolbar select {
-  padding: 12px 14px;
+  height: 44px;
+  padding: 0 14px;
   border-radius: 10px;
   border: 1px solid #d7e2f3;
   background: #fff;
+  font-size: 1rem;
 }
+
 
 .table-wrap {
   border: 1px solid #e6ecf8;
@@ -154,9 +158,9 @@
   border: 1px solid #71a88a;
 }
 .actions {
-  display: flex;          /* make children horizontal */
-  gap: 8px;               /* spacing between buttons */
-  align-items: center;    /* vertically center icons */
+  display: flex;         
+  gap: 8px;             
+  align-items: center;    
 }
 
 .actions .icon-btn {

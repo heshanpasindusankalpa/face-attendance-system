@@ -17,11 +17,11 @@ exports.registerAdmin = async (req, res) => {
 
     const newAdmin = await new Admin({ username, password }).save();
 
-    // Add logging here
+    
     console.log('Admin saved to main DB, ID:', newAdmin._id);
     
     try {
-      // Just to initialize admin-specific DB by switching
+      // Initialize admin-specific DB by creating the Employee model
       getAdminDb(newAdmin._id.toString()).model('Employee', EmployeeSchema);
       console.log('Admin DB initialized successfully');
     } catch (dbError) {
@@ -35,7 +35,7 @@ exports.registerAdmin = async (req, res) => {
   }
 };
 
-// Register employee under specific admin's DB
+// Register a new employee under a specific admin
 exports.registerEmployee = async (req, res) => {
   const { adminId, employee } = req.body;
 
@@ -60,7 +60,7 @@ exports.registerEmployee = async (req, res) => {
 
 
 // Mark attendance for employee in admin DB
-// controller.js (replace markAttendance to use employeeId field, not _id)
+
 exports.markAttendance = async (req, res) => {
   const { adminId, employeeId } = req.body;
   if (!adminId || !employeeId)
@@ -98,7 +98,7 @@ exports.getEmployees = async (req, res) => {
   const employees = await Employee.find({}, 'employeeId fullName department');
   res.json({ success: true, employees });
 };
-// controller.js (add this near other exports)
+
 exports.getEmployeesWithEncodings = async (req, res) => {
   const { adminId } = req.query;
   if (!adminId)

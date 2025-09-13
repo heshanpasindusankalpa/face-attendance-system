@@ -49,9 +49,9 @@
   color: #666;
 }
 
-/* keep your existing styles below */
+
 .login-form { display: flex; flex-direction: column; }
-.login-form label { margin-bottom: 5px; font-weight: 500; }
+.login-form label { margin-bottom: 5px; font-weight: 500;color: black; }
 .login-form input {
   padding: 10px;
   margin-bottom: 15px;

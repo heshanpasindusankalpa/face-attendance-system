@@ -18,12 +18,12 @@ export default function Reg() {
     department: "",
     position: "",
     email: "",
-    faceEncodings: [], // will fill with 5 encodings
+    faceEncodings: [], 
   });
   const departments = ["HR", "Finance", "Engineering", "Sales", "Marketing"];
   const positions = ["Manager", "Engineer", "Technician", "Admin", "Intern"];
 
-  // Capture 5 frames in the BROWSER (no Flask camera)
+  
   const captureFrames = async () => {
     if (!emp.employeeId || !emp.fullName) {
       setError("Please fill Employee ID and Full Name before capturing.");
@@ -37,15 +37,15 @@ export default function Reg() {
 
     try {
       for (let i = 0; i < 5; i++) {
-        // Take a snapshot from react-webcam
+        
         const imageSrc = webcamRef.current?.getScreenshot();
         if (!imageSrc) {
-          // try once more after a short wait
+          
           await new Promise((r) => setTimeout(r, 120));
           const retry = webcamRef.current?.getScreenshot();
           if (!retry) continue;
           images.push(retry);
-          // send to Flask to get a 128-d encoding
+          
           const res = await fetch("http://localhost:5000/encode_from_image", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -64,7 +64,7 @@ export default function Reg() {
           if (data.success && data.encoding) encodings.push(data.encoding);
         }
 
-        // small delay so frames differ a bit (pose/lighting)
+       
         await new Promise((r) => setTimeout(r, 350));
       }
 
@@ -82,7 +82,7 @@ export default function Reg() {
     }
   };
 
-  // Submit employee + encodings to Node /api/register-employee
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const adminId = localStorage.getItem("adminId");
@@ -111,7 +111,7 @@ export default function Reg() {
         throw new Error(data.message || "Error registering employee.");
       }
 
-      // Reset on success
+    
       setEmp({
         employeeId: "",
         fullName: "",
@@ -135,7 +135,7 @@ export default function Reg() {
       {error && <div className="error-message">{error}</div>}
 
       <div className="registration-form">
-        {/* Face Capture */}
+       
         <div className="face-capture">
           <h2>Face Capture</h2>
           <div className="capture-box">
